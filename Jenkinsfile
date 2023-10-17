@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("getting code") {
             steps {
-                git url: 'https://github.com/amira123bd/DevopsTP.git', branch: 'master',
+                git url: 'https://github.com/amira123bd/DevopsTP', branch: 'master',
                 credentialsId: 'github-credentials' //jenkins-github-creds
                 sh "ls -ltr"
             }
