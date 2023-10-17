@@ -9,11 +9,11 @@ pipeline{
             }
         }
 
-       //stage("Setting up infra") 
+       //build de l'image
          stage("creation de image"){
             steps {                
                 script {
-                    echo "======== executing ========"
+                    echo "== executing =="
                         sh "mvn clean package"
             
                         sh "docker build -t devopstp ."
