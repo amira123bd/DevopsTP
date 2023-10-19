@@ -20,6 +20,14 @@ pipeline{
                        }            
                         }
                     } 
+        stage("Run Unit Tests") {
+    steps {
+        script {
+            echo "== Running Unit Tests =="
+            sh "mvn test"
+        }
+          }
+            }
         stage("push to docker hub") {
             steps {                
                 script {
