@@ -49,7 +49,7 @@ pipeline{
             steps {
                 script {
                     // Apply Kubernetes configuration
-                    sh "kubectl apply -f /home/hassen/RT5/kuber/static/react-app-deployment.yaml"
+                    sh "ssh amira@192.168.169.109 kubectl get pods"
                 }
             }
         }
@@ -57,7 +57,7 @@ pipeline{
         stage('Expose with Minikube') {
             steps {
                 script {
-                    //sh "minikube --kubeconfig $KUBECONFIG_PATH service mywebsite-service"
+                    sh "minikube --kubeconfig $KUBECONFIG_PATH service mywebsite-service"
                     sh "KUBECONFIG=/home/hassen/.kube/config minikube service mywebsite-service"
                 }
             }
