@@ -44,6 +44,24 @@ pipeline{
                     echo "======== Setting up infra execution failed ========"
                 }
             }
+
+    stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    // Apply Kubernetes configuration
+                    sh "kubectl apply -f /home/hassen/RT5/kuber/static/react-app-deployment.yaml"
+                }
+            }
+        }
+
+        stage('Expose with Minikube') {
+            steps {
+                script {
+                    //sh "minikube --kubeconfig $KUBECONFIG_PATH service mywebsite-service"
+                    sh "KUBECONFIG=/home/hassen/.kube/config minikube service mywebsite-service"
+                }
+            }
+        }
              
         }        
    /* 
@@ -55,3 +73,7 @@ pipeline{
             echo "========pipeline execution failed========"
         }
     }*/
+
+
+
+
